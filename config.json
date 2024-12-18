@@ -4,7 +4,7 @@
     "client_id": "4148cca0f91e524d1a42",
     "client_secret": "637c2c993cccf79c51a0a215f538932edfdcb9b0",
     "title": "Guoshifu 的 Blog",
-    "instruction": "基于GitHub issue的个人博客模板",
+    "instruction": "青海郭师傅的Blog模板",
     "server_link": "https;//blog.guoshifu.xyz",
     "filter": {
         "creator": "all",
