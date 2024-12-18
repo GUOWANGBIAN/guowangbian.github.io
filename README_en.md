@@ -1,49 +1,37 @@
 # gitblog
-这是一个极轻量级的，基于git issue的个人博客模板，非常适合于想在GitHub pages上搭建个人博客的人。
+This is a very small personal blog template bsaed on git issues for anyone who wants to build a personal blog on GitHub pages.
 
-[示例页面](https://imuncle.github.io/gitblog)
+[Demo page](https://imuncle.github.io/gitblog)
 
-[English](README_en.md)
+[中文](README.md)
 
-## 现有功能
-- [x] 发表文章
-- [x] 文章评论
-- [x] 文章、评论分页
-- [x] 文章设置标签
-- [x] 文章搜索功能
-- [x] 文章、评论点赞功能（不能取消点赞 :stuck_out_tongue_winking_eye:
-- [x] 博客API接口，可输出`json`格式信息，方便用户进行开发客户端等操作。具体接口使用见说明底部。
-- [x] 可根据文章作者和文章状态(close或open)筛选文章，暂不支持多人筛选
+# Functions
+- [x] Publish an article
+- [x] Article comments
+- [x] Set labels for article
+- [x] Search for aticle
+- [x] Like an article or comment
+- [x] API. It can output 'json' format information. Using methods are at the bottom of README.
+- [x] Issue Filter. You can filter your issues by creator or issue state (open or close). Multi-creator filtering is currently not supported.
 
-博客本身没有发表文章的接口，而是在GitHub的issue页面直接new issue。
+You can publish your article in Github issues page, just click 'New issue'.
 
-评论功能参考了[Gitment](https://github.com/imsun/gitment)，借用了Gitment的css样式，重写了JavaScript逻辑。评论功能基于GitHub的issue，支持Markdown语法，支持@功能，支持点赞功能。
+The comments feature is referenced by [Gitment](https://github.com/imsun/gitment). I borrowed its css and rewrite the js doc.
 
-可以在GitHub上为每个文章指定标签label。
+You can set labels for each article in Github issues page.
 
-404页面模仿了GitHub自己的404页面，可点击[这里](https://imuncle.github.io/anything)查看404页面示例。
+## How to Start
+### Get this repo
+You can **Fork** or **clone** this repo. Then you can customize by yourself.
 
-## 如何开始
+### Get Github OAuth APP
+Click [here](https://github.com/settings/applications/new) to get a Github OAuth APP. Be sure that the **callback URL** is your own home website, such as 'https://imuncle.github.io' .
 
-### 复制该仓库
-最快捷的方法就是直接**Fork**这个repo，修改仓库名为`username.github.io`格式，然后稍微配置一下就能直接使用了。
+You'll get **client_id** and **client_secret** finally.
 
-第二种办法就是clone仓库
-
-```git
-git clone "https:/github.com/imuncle/gitblog"
-```
-
-### 申请GitHub OAuth APP
-点击[这里](https://github.com/settings/applications/new)申请。
-
-注意申请时的**callback URL**一定要填写正确。一般就写自己网站的首页就行，比如https://imuncle.github.io 。
-
-申请完毕后会拿到对应的唯一的**client_id**和**client_secret**，这两个字符串在后面的配置中会使用到。
-
-## 个性化定制
-### 基本配置
-修改**config.json**：
+## Personalized customization
+### Basic configuration
+In **config.json**:
 ```js
 {
     "name": "your github username",
@@ -59,8 +47,8 @@ git clone "https:/github.com/imuncle/gitblog"
     },
     "menu": {
         //add your menu items and URL here
-        //example:
-        //"Home" : "./",
+		//example:
+		//"Home" : "./",
         //"RSS" : "https://rsshub.app/github/issue/imuncle/imuncle.github.io",
         //"About me" : "content.html?id=41"
     },
@@ -89,30 +77,29 @@ git clone "https:/github.com/imuncle/gitblog"
     }
 }
 ```
-将自己的个人信息填写进去。
+Add your own information into it.
 
-选项|含义
+Options|interpretation
 :--:|:--:
-name|填写你的GitHub用户名
-repo|填写你的pages对应的仓库，一般是：用户名.github.io
-client_id|填写你申请OAuth APP时拿到的client_id
-client_secret|填写你申请OAuth APP时拿到的client_secret
-title|填写你的个人网站的标题
-instruction|填写你的个人网站的简介
-server_link|填写你的服务端地址，~~若没有服务器可填写`http://119.23.8.25/gh-oauth-server.php`~~ 该服务器已停用
-filter|填写issue筛选规则，可根据creator和issue state筛选
-menu|填写右侧菜单中的名称和链接
-friends|填写你的网站的友链，若没有则不填写
-icons|填写网站页脚的图标信息，若没有则不填写
+name|Fill in your GitHub username
+repo|Fill in your pages corresponding repository, which is generally: username.github.io
+client_id|Fill in the "client id" you got when you applied for OAuth APP
+client_secret|Fill in the "client secret" you got when applying for OAuth APP
+title|Fill in the title of your personal website
+instruction|Fill in the profile of your website
+server_link|Fill in your server address
+filter|Fill in the issue filter rule. You can filter your issues by creator or issue state (open or close).
+menu|Fill in the names and links in the menu on the right
+friends|Fill in the friendship chain of your website (optional)
+icons|Fill in the informations of the icons that you want to show at the bottom (optional)
 
-上面的server_link是服务端的地址，，因为访问用户的access_token必须通过服务端访问，详情可见[这篇文章](https://imuncle.github.io/content.html?id=22)。这个服务端使用PHP编写，只负责请求用户的access_token，不会存储任何数据。详见[源代码](https://github.com/imuncle/gitblog/blob/master/server/gh-oauth-server.php)。
+The server_link above is the address of the server, because the access_token of the accessing user must be accessed through the server. Details can be found in [this article] (https://imuncle.github.io/content.html?id=22). This server is written in PHP and is only responsible for requesting the user's access_token and does not store any data. See the [source code](https://github.com/imuncle/gitblog/blob/master/server/gh-oauth-server.php).
 
-如果你有服务器，那么你可以使用该PHP代码自己配置服务端，将**server_link**写为自己的服务端地址。
+If you have a server, you can use the PHP code to configure the server yourself and write **server_link** as your server address.
 
-### 动态打字配置
-网站首页有一个动态打字的效果，这里参考的是[type.js](https://github.com/mattboldt/typed.js)项目，配置地方在**index.html**中。
+### Dynamic typing
+You can see a dynamic typing effect in the home page in [demo page](https://imuncle.github.io). This is references by [type.js](https://github.com/mattboldt/typed.js). You can config it in **index.html**:
 
-找到如下代码（在尾部）：
 ```javascript
 $("#changerificwordspanid").typed({
     strings: ["good", "happy", "healthy", "tall"],
@@ -123,29 +110,15 @@ $("#changerificwordspanid").typed({
     loop:true
 });
 ```
-可以更改`strings`来更改单词。更多的配置选项请参考[原项目](https://github.com/mattboldt/typed.js)。
+By changing the `strings`, you can make your own dynamic typing. For more information you can visit [type.js](https://github.com/mattboldt/typed.js).
 
-### 图片更改
-图片全部都存储在**images**文件夹中。
+### Images
+All the images are stored in **images** folder. You can change them at will.
 
-图片名称|含义
-:--:|:--:
-404.png|404页面
-avatar.jpg|网站图标
-fish.png|404页面
-github.svg|GitHub图标
-house1.png|404页面
-house2.png|404页面
-page_backfround.jpg|首页的背景图
-search.svg|右上角搜索图标
-totop.png|右下角“回到顶部”按钮图标
+## API
+The details of implementing can be found in [api.html](https://github.com/imuncle/gitblog/blob/master/api.html).
 
-如果没有前端知识，建议更改图片时不要更改文件名。
-
-## API接口
-API接口的实现见[api.html](https://github.com/imuncle/gitblog/blob/master/api.html)，通过访问该文件获取信息，使用url参数指定获取的信息内容。具体的用法如下。
-
-### 获取菜单信息
+### Get menu lists
 ```javascript
 $.ajax({
     type: 'get',
@@ -159,7 +132,7 @@ $.ajax({
 });
 ```
 
-返回的数据格式如下：
+The format of json are as follows:
 ```json
 [
 	{
@@ -205,13 +178,13 @@ $.ajax({
 ]
 ```
 
-### 获取文章列表
-获取文章列表分为三种模式：一种是无筛选的普通模式，一种是按标签（label）筛选的标签模式，一种是按搜索内容筛选的搜索模式。三种模式都支持分页模式。
+### Get the article list
+There are 3 modes：Normal Mode(no screening)，Label Mode(screening by label)，Search Mode(screening by search).
 ```javascript
 var request_url = 'your domain name' + 'api.html?';
-request_url += 'page=1';    //普通模式
-request_url += 'label=RM&page=1';   //标签模式
-request_url += 'q=姿态解析&page=1'; //搜索模式
+request_url += 'page=1';    //Normal Mode
+request_url += 'label=RM&page=1';   //Label Mode
+request_url += 'q=姿态解析&page=1'; //Search Mode
 $.ajax({
     type: 'get',
     headers: {
@@ -223,9 +196,9 @@ $.ajax({
     }
 });
 ```
-> 注：以上代码中`page`参数均为可选。
+> Parameters of 'page' in the above code are optional.
 
-返回的数据格式如下：
+The format of json are as follows:
 ```json
 {
 	"page": 4,
@@ -354,10 +327,10 @@ $.ajax({
 	]
 }
 ```
-> 注：默认一页显示10篇文章
+> In default, each page displays 10 articles.
 
-### 获取文章内容
-这是获取文章的详细内容。**注意**，这里返回的是**HTML格式**的文章内容，而`获取文章列表`拿到的是**Markdown格式**的文章内容。使用方法如下：
+### Get content of an article
+**Attention**: This returns the article content in **HTML format**, while 'Get the article list' gets the article content in **Markdown format**.
 ```javascript
 $.ajax({
     type: 'get',
@@ -371,7 +344,7 @@ $.ajax({
 });
 ```
 
-返回的数据格式如下：
+The format of json are as follows:
 ```json
 {
 	"title": "博客搭建过程",
@@ -386,14 +359,12 @@ $.ajax({
 }
 ```
 
-## 依赖
+### Dependence
 * [gitment](https://github.com/imsun/gitment)
 * [MathJax](https://www.mathjax.org/)
 * [jQuery](http://www.jquery.org/)
 * [Bootstrap](http://www.getbootstrap.com/)
 * [type.js](https://github.com/mattboldt/typed.js)
 
-欢迎提issue，也欢迎PR~
-
-## 许可
+## LICENSE
 MIT LICENSE
